@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class FlightService {
@@ -23,8 +24,10 @@ public class FlightService {
                 flightDTO.getDepartureDate(),
                 flightDTO.getDepartureTime()
        );
-       flight.setPassengers(new ArrayList<>());
-
        return flight;
+   }
+
+   public List<Flight> getAllFlights(){
+        return flightRepository.findAll();
    }
 }
