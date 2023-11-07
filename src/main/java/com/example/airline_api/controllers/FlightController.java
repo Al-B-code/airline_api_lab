@@ -42,6 +42,8 @@ public class FlightController {
     // Book passenger on a flight
     @PatchMapping(value = "/{id}")
     public ResponseEntity<Flight> addPassengerToFlight(){
+
+
         return null;
     }
 

@@ -28,5 +28,9 @@ public class PassengerService {
         return passengerRepository.findAll();
     }
 
+    public Passenger getPassengerById(Long id){
+        return passengerRepository.findPassengerById(id);
+    }
+
 
 }
