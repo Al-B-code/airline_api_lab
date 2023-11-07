@@ -1,10 +1,12 @@
 package com.example.airline_api.controllers;
 
+import com.example.airline_api.dto.BookingDTO;
 import com.example.airline_api.dto.FlightDTO;
 import com.example.airline_api.models.Flight;
 import com.example.airline_api.models.Passenger;
 import com.example.airline_api.services.FlightService;
 import com.example.airline_api.services.PassengerService;
+import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,10 +43,9 @@ public class FlightController {
 
     // Book passenger on a flight
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Flight> addPassengerToFlight(){
-
-
-        return null;
+    public ResponseEntity<Flight> addPassengerToFlight(@RequestBody BookingDTO bookingDTO, @PathVariable Long id){
+        Flight flight = flightService.addPassengerToFlight(bookingDTO, id);
+        return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
     // Cancel flight
