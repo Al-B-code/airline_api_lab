@@ -21,7 +21,7 @@ public class PassengerController {
     // Display details of all passengers
     @GetMapping
     public ResponseEntity<List<Passenger>> getAllPassengers(){
-        return null;
+        return new ResponseEntity<>(passengerService.getAllPassengers(), HttpStatus.OK);
     }
 
     // Display specific passenger details
