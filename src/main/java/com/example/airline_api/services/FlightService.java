@@ -24,7 +24,8 @@ public class FlightService {
                 flightDTO.getDepartureDate(),
                 flightDTO.getDepartureTime()
        );
-       return flight;
+        flightRepository.save(flight);
+        return flight;
    }
 
    public List<Flight> getAllFlights(){
