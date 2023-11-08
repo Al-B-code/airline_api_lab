@@ -4,6 +4,8 @@ public class BookingDTO {
 
     private long passengerId;
 
+//    private long flightId;
+
 
     public BookingDTO() {
     }

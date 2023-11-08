@@ -53,6 +53,22 @@ public class FlightService {
         passenger.addFlight(flight);
         return flight;
    }
+
+
+   // needs to remove a passenger from a flight as well as remove a flight from a passenger
+   @Transactional
+   public String removePassengerFromFlight(BookingDTO bookingDTO, Long flightId){
+        Flight flight = getFlightById(flightId);
+        Passenger passenger = passengerRepository.findPassengerById(bookingDTO.getPassengerId());
+        flightRepository.deleteById(flightId);
+        passengerRepository.deleteById(bookingDTO.getPassengerId());
+
+        return String.format("%s removed from the %s flight to %s on %s",
+                passenger.getName(),
+                flight.getDepartureTime(),
+                flight.getDestination(),
+                flight.getDepartureDate());
+   }
 }
 
 

@@ -50,8 +50,8 @@ public class FlightController {
 
     // Cancel flight
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity cancelFlight(){
-        return null;
+    public ResponseEntity cancelFlight(@PathVariable Long id, @RequestBody BookingDTO bookingDTO){
+        return new ResponseEntity(flightService.removePassengerFromFlight(bookingDTO, id), HttpStatus.OK);
     }
 
 }
