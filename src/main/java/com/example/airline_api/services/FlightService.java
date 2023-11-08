@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FlightService {
@@ -47,12 +48,20 @@ public class FlightService {
 
 
    @Transactional
-   public Flight addPassengerToFlight(BookingDTO bookingDTO, Long id){
+   public Optional<Flight> addPassengerToFlight(BookingDTO bookingDTO, Long id){
         Flight flight = flightRepository.findFlightById(id);
+        int capacity = flight.getCapacity();
+        int currentCapacity = flightRepository.countPassengerFlightsForFlight(id);
+       System.out.println(currentCapacity);
+
+        if(currentCapacity > capacity){
+            return Optional.empty();
+        }
+
         Passenger passenger = passengerRepository.findPassengerById(bookingDTO.getPassengerId());
         flight.addPassenger(passenger);
         passenger.addFlight(flight);
-        return flight;
+        return Optional.of(flight);
    }
 
 

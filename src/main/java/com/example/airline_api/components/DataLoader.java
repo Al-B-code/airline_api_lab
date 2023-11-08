@@ -48,6 +48,8 @@ public class DataLoader implements ApplicationRunner {
         Flight paris = new Flight("Paris, France", 150, "06/12/23", "09:00");
         flightRepository.save(paris);
 
+        Flight testPassengerLimit = new Flight("Location", 5, "20/12/23", "10:00");
+
 
 
 
@@ -76,7 +78,12 @@ public class DataLoader implements ApplicationRunner {
         flightRepository.save(paris);
 
         middayTenerife.addPassenger(bob);
+        middayTenerife.addPassenger(jim);
+        middayTenerife.addPassenger(alex);
         flightRepository.save(middayTenerife);
+
+        testPassengerLimit.addPassenger(maisie);
+        flightRepository.save(testPassengerLimit);
 
 
 

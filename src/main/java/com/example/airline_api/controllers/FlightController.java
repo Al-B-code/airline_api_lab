@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/flights")
@@ -49,8 +50,11 @@ public class FlightController {
 
     // Book passenger on a flight
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Flight> addPassengerToFlight(@RequestBody BookingDTO bookingDTO, @PathVariable Long id){
-        Flight flight = flightService.addPassengerToFlight(bookingDTO, id);
+    public ResponseEntity<Optional<Flight>> addPassengerToFlight(@RequestBody BookingDTO bookingDTO, @PathVariable Long id){
+        Optional<Flight> flight = flightService.addPassengerToFlight(bookingDTO, id);
+        if (flight.isEmpty()){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
