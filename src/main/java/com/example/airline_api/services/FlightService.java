@@ -2,6 +2,7 @@ package com.example.airline_api.services;
 
 
 import com.example.airline_api.dto.BookingDTO;
+import com.example.airline_api.dto.DestinationDTO;
 import com.example.airline_api.dto.FlightDTO;
 import com.example.airline_api.models.Flight;
 import com.example.airline_api.models.Passenger;
@@ -68,6 +69,11 @@ public class FlightService {
                 flight.getDepartureTime(),
                 flight.getDestination(),
                 flight.getDepartureDate());
+   }
+
+   public List<Flight> getAllFlightsByDestination(DestinationDTO destinationDTO){
+        String destination = destinationDTO.getDestination();
+        return flightRepository.findFlightByDestination(destination);
    }
 }
 

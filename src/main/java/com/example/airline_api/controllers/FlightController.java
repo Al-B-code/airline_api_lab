@@ -1,6 +1,7 @@
 package com.example.airline_api.controllers;
 
 import com.example.airline_api.dto.BookingDTO;
+import com.example.airline_api.dto.DestinationDTO;
 import com.example.airline_api.dto.FlightDTO;
 import com.example.airline_api.models.Flight;
 import com.example.airline_api.models.Passenger;
@@ -25,6 +26,11 @@ public class FlightController {
     @GetMapping
     public ResponseEntity<List<Flight>> getAllFlights(){
         return new ResponseEntity<>(flightService.getAllFlights(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/destination")
+    public ResponseEntity<List<Flight>> getAllFlightsByDestination(@RequestBody DestinationDTO destinationDTO){
+        return new ResponseEntity<>(flightService.getAllFlightsByDestination(destinationDTO), HttpStatus.OK);
     }
 
     // Display a specific flight
@@ -53,5 +59,7 @@ public class FlightController {
     public ResponseEntity cancelFlight(@PathVariable Long id, @RequestBody BookingDTO bookingDTO){
         return new ResponseEntity(flightService.removePassengerFromFlight(bookingDTO, id), HttpStatus.OK);
     }
+
+
 
 }

@@ -33,8 +33,11 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         //Create flights
-        Flight tenerife = new Flight("Tenerife, Spain", 200, "10/12/23", "14:00");
-        flightRepository.save(tenerife);
+        Flight middayTenerife = new Flight("Tenerife, Spain", 200, "10/12/23", "12:00");
+        flightRepository.save(middayTenerife);
+
+        Flight nightTenerife = new Flight("Tenerife, Spain", 200, "10/12/23", "20:00");
+        flightRepository.save(nightTenerife);
 
         Flight amsterdam = new Flight("Amsterdam, Netherlands", 250, "13/12/23", "20:00");
         flightRepository.save(amsterdam);
@@ -66,15 +69,16 @@ public class DataLoader implements ApplicationRunner {
 
 
         //add passenger to flights
-        maisie.addFlight(paris);
-        passengerRepository.save(maisie);
-
-        jim.addFlight(usa);
-        passengerRepository.save(jim);
-
         usa.addPassenger(alex);
-        passengerRepository.save(alex);
         flightRepository.save(usa);
+
+        paris.addPassenger(jim);
+        flightRepository.save(paris);
+
+        middayTenerife.addPassenger(bob);
+        flightRepository.save(middayTenerife);
+
+
 
 
     }
