@@ -11,6 +11,10 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -33,22 +37,22 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         //Create flights
-        Flight middayTenerife = new Flight("Tenerife, Spain", 200, "10/12/23", "12:00");
+        Flight middayTenerife = new Flight("Tenerife, Spain", 200, LocalDate.of(2023,10,10), LocalTime.of(9,30 ));
         flightRepository.save(middayTenerife);
 
-        Flight nightTenerife = new Flight("Tenerife, Spain", 200, "10/12/23", "20:00");
+        Flight nightTenerife = new Flight("Tenerife, Spain", 200, LocalDate.of(2023,10,10), LocalTime.of(21,0 ));
         flightRepository.save(nightTenerife);
 
-        Flight amsterdam = new Flight("Amsterdam, Netherlands", 250, "13/12/23", "20:00");
+        Flight amsterdam = new Flight("Amsterdam, Netherlands", 250, LocalDate.of(2023,10,10), LocalTime.of(5,0 ));
         flightRepository.save(amsterdam);
 
-        Flight usa = new Flight("New York, USA", 250, "14/12/23", "07:00");
+        Flight usa = new Flight("New York, USA", 250, LocalDate.of(2023,12,12), LocalTime.of(9,0 ));
         flightRepository.save(usa);
 
-        Flight paris = new Flight("Paris, France", 150, "06/12/23", "09:00");
+        Flight paris = new Flight("Paris, France", 150, LocalDate.of(2023,10,10), LocalTime.of(20,30 ));
         flightRepository.save(paris);
 
-        Flight testPassengerLimit = new Flight("Location", 5, "20/12/23", "10:00");
+        Flight testPassengerLimit = new Flight("Location", 5, LocalDate.of(2023,10,10), LocalTime.of(15,30 ));
 
 
 

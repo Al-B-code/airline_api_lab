@@ -82,4 +82,8 @@ public class Passenger {
     public void addFlight(Flight flight){
         this.flights.add(flight);
     }
+
+    public void removeFlight (Flight flight){
+        this.flights.remove(flight);
+    }
 }

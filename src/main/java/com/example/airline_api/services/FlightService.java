@@ -80,6 +80,14 @@ public class FlightService {
                 flight.getDepartureDate());
    }
 
+   public void removeFlight(Long id){
+        Flight flight = flightRepository.findFlightById(id);
+        for (Passenger passenger : flight.getPassengers() ){
+            passenger.removeFlight(flight);
+        }
+       flightRepository.deleteById(id);
+   }
+
    public List<Flight> getAllFlightsByDestination(DestinationDTO destinationDTO){
         String destination = destinationDTO.getDestination();
         return flightRepository.findFlightByDestination(destination);
