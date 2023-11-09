@@ -82,9 +82,9 @@ public class FlightService {
 
    public void removeFlight(Long id){
         Flight flight = flightRepository.findFlightById(id);
-        for (Passenger passenger : flight.getPassengers() ){
-            passenger.removeFlight(flight);
-        }
+//        for (Passenger passenger : flight.getPassengers() ){
+//            passenger.removeFlight(flight);
+//        }
        flightRepository.deleteById(id);
    }
 
