@@ -19,12 +19,12 @@ public class FlightDTO {
     private int capacity;
 
 
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+//    @JsonSerialize(using = LocalDateSerializer.class)
+//    @JsonDeserialize(using = LocalDateDeserializer.class)
     private LocalDate departureDate;
 
-    @JsonSerialize(using = LocalTimeSerializer.class)
-    @JsonDeserialize(using = LocalTimeDeserializer.class)
+//    @JsonSerialize(using = LocalTimeSerializer.class)
+//    @JsonDeserialize(using = LocalTimeDeserializer.class)
     private LocalTime departureTime;
 
     //WIll not contain a passenger list because i want the addflight method inside of the services to create an empty list.
